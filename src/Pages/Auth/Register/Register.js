@@ -13,6 +13,9 @@ import { register, reset } from "../../../Slices/AuthSlice";
 // Images
 import logo from "../../../Images/brotasGram-logo.svg";
 
+// Components
+import Message from '../../../Components/Message/Message';
+
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -94,7 +97,9 @@ const Register = () => {
             Ao se cadastrar você concorda com os nossos Termos, Privacidade, Politícas de uso e Cookies.
           </p>
 
-          <input type="submit" value="Cadastrar" />
+          {!loading && <input type="submit" value="Cadastrar" />}
+          {loading && <input type="submit" value="Aguarde" disabled />}
+          {error && <Message msg={error} type="error" />}
 
         </form>
 
